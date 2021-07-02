@@ -1,0 +1,12 @@
+//extends ../../commonViews/layout
+
+block content
+    #content
+        form(action="/login", method="post")
+            h1 Вход
+            p
+                input(type="text", name="email", placeholder="Адрес электронной почты", required)
+            p
+                input(type="password", name="password", placeholder="Пароль", required)
+            p
+                input(type="submit", value="Войти")

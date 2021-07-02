@@ -3,9 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var expressSession = require('express-session');
 
-var indexRouter = require('./components/index/index');
-var usersRouter = require('./components/users/users');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+
+var indexRouter = require('./components/index/indexRouter');
+var usersRouter = require('./components/users/usersRouter');
+
+const db = require('./databases/mongoDB');
 
 var app = express();
 
@@ -18,6 +24,67 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(expressSession({ secret: 'aventica', resave: false, saveUninitialized: false }));
+
+passport.use(new LocalStrategy({
+  usernameField: 'email',
+  passwordField: 'password',
+  session: true
+},
+  (username, password, done)  => {
+    console.log(username, password);
+    db.getUserByEmail(username)
+    .then(user => {
+      console.log(user);
+      if (!user) {
+        return done(new Error('Пользователь не найден.', false)); 
+      }
+      if (!db.comparePassword(password, user.password)) {
+        return done(new Error('Неверный пароль.', false)); 
+      }
+      return done(null, user);
+    })
+    .catch(reason => {
+      return done(reason);
+    });
+  }
+));
+
+passport.serializeUser((user, cb) => {
+  cb(null, user._id);
+});
+
+passport.deserializeUser((id, cb) => {
+  db.getById(id, 'users')
+  .then(user => {
+    if (user.length == 0) {
+      return cb(new Error('Пользователь  ' + id + ' не найден.')); 
+    }
+    cb(null, user);
+  })
+  .catch(reason => {
+    return cb(reason);
+  });
+});
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated();
+  if (res.locals.isAuthenticated) {
+      res.locals.userInfo = {
+          id: req.user._id,
+          email: req.user.email,
+          name: req.user.name,
+          surname: req.user.surname,
+          patronymic: req.user.patronymic,
+          role: req.user.role
+      }
+  }
+  next();
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

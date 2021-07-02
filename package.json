@@ -7,12 +7,17 @@
     "demon": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.5",
     "debug": "~4.3.1",
     "express": "~4.17.1",
+    "express-session": "^1.17.2",
     "http-errors": "~1.8.0",
+    "mongodb": "^3.6.9",
     "morgan": "~1.10.0",
     "nodemon": "^2.0.9",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pug": "^3.0.2"
   }
 }
