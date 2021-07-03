@@ -46,7 +46,7 @@ a {
     /*border-top-right-radius: 0px;*/
     /*border-bottom-right-radius: 0px;*/
     /*border: 1px #A77272;*/
-    min-width: 40%;
+    width: 100%;
 }
 #advanced-search-button {
     display: inline-block;
@@ -115,4 +115,29 @@ input[type='button']:focus, input[type='submit']:focus, .default-button:focus {
 }
 input[type='button']:active, input[type='submit']:active, .default-button:active {
     font-size: calc(14px - 1px);
+}
+
+#search-results {
+    padding: 10px 20px;
+}
+.doc-link {
+    display: block;
+}
+.add-remove-btn {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+.add-remove-btn:hover {
+    cursor: pointer;
+}
+.add-remove-btn {
+    background-color: #A77272;
+    mask-image: url('/images/plus.svg');
+    -webkit-mask-image: url('/images/plus.svg');
+    transform: rotate(0deg);
+}
+.remove-btn  {
+    transform: rotate(45deg);
+    background-color:  #A77272;
 }

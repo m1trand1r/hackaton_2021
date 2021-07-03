@@ -1,16 +1,22 @@
 extends ../../commonViews/layout
 
+append head-scripts
+    script(src="javascripts/search.js")
+
 block content
     h1= title
-    p Welcome to #{title}
     .row
         .col-12
             #search-row-container
                 #search-row
-                    input#search-input(type="text", name="search-row", placeholder="Поиск по электронному каталогу", autocomplete="off", value= requestText || "")
+                    input#search-input(type="text", name="search-row", placeholder="Поиск по архиву", autocomplete="off", value= requestText || "")
                     select(id="category", name="category").form-select.custom-select
                         option(value="default") По названию Фонда/Описи/Дела
                         option(value="subject_index") По предметному указателю
                         option(value="name_index") По именному указателю
                         option(value="epmk") По протоколу ЭПМК
                     input#search-button(type="button", value="Найти")
+    .row
+        .col-12 
+            #search-results
+            
