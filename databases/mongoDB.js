@@ -114,3 +114,22 @@ module.exports.deleteUser = (id) => { // Удаление пользовател
         }       
     });
 }
+
+module.exports.getDocumentNumber = (text, collection) => { 
+    return new Promise((resolve, reject) => {
+        try {
+            dbClient
+                .db('hackaton_2021')
+                .collection(collection)
+                .find({ title: { $regex: text, $options: 'i' } })
+                .toArray(function(err, results){
+                    if (err) {
+                        reject(err)
+                    }
+                    resolve(results);
+                });
+        } catch (err) {
+            reject(err);
+        }
+    });
+};
