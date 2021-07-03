@@ -1,5 +1,4 @@
 body {
-    padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,6 +6,14 @@ a {
     color: #A77272;
 }
 
+.icon_custom {
+    color: #FFFFFF;
+}
+
 .navbar-custom {
+    background-color: #A77272;
+}
+
+.dropdown_custom {
     background-color: #A77272;
 }
