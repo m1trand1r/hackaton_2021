@@ -2,19 +2,19 @@ const fs = require('fs');
 
 const indexModel = require('./indexModel');
 
-module.exports.getIndex = async (req, res, next) => {
+module.exports.getIndex = (req, res, next) => {
     res.render('index/indexViews/index', {
         title: 'Главная'
     });
 };
 
-module.exports.getLogin = async (req, res, next) => {
+module.exports.getLogin = (req, res, next) => {
     res.render('index/indexViews/login', {
         title: 'Вход'
     });
 };
 
-module.exports.getRegistration = async (req, res, next) => {
+module.exports.getRegistration = (req, res, next) => {
     res.render('index/indexViews/registration', {
         title: 'Регистрация'
     });
