@@ -14,6 +14,12 @@ module.exports.getLogin = async (req, res, next) => {
     });
 };
 
+module.exports.getRegistration = async (req, res, next) => {
+    res.render('index/indexViews/registration', {
+        title: 'Регистрация'
+    });
+}
+
 module.exports.getLogout = function(req, res) {
     res.redirect('/login');
 };

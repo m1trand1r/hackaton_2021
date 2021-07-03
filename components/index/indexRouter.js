@@ -22,4 +22,6 @@ router.post('/login', passport.authenticate('local',
   })
 );
 
+router.get('/registration', indexController.getRegistration);
+
 module.exports = router;
