@@ -1,13 +1,27 @@
 body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
     color: #A77272;
 }
 
+form {
+    display: block;
+    font-weight: bold;
+    margin-top: 0em;
+}
+
 .icon_custom {
     color: #FFFFFF;
+}
+
+.submit_btn {
+    min-width: 35%;
+}
+
+.font_color {
+    color: #A77272;
 }
 
 .navbar-custom {
@@ -18,6 +32,26 @@ a {
 .dropdown_custom {
     background-color: #A77272;
 }
+
+.custom_input {
+    min-width: 35%;
+    padding-left: 9px;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 2px solid #A77272;
+}
+
+.custom_input:focus {
+    min-width: 35%;
+    padding-left: 9px;
+    outline: none;
+    height: 40px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    border: 3px solid #A77272;
+}
+
 
 #search-row-container {
     width: 100%;
@@ -57,7 +91,6 @@ a {
 
 .custom-select {
     max-width: 305px;
-
     border-top: 2px solid #A77272;
     border-bottom: 2px solid #A77272;
     border-right: 2px solid #A77272;
@@ -65,7 +98,8 @@ a {
     border-radius: 0;
 }
 
-input[type='text'], input[type='text'], .default-input {
+.search-input {
+    min-width: 40%;
     padding-left: 9px;
     outline: none;
     border-top: 2px solid #A77272;
@@ -76,7 +110,8 @@ input[type='text'], input[type='text'], .default-input {
 
 }
 
-input[type='text']:active, input[type='text']:active, .default-input:active{
+.search-input:active{
+    min-width: 40%;
     padding-left: 9px;
     outline: none;
     border-top: 2px solid #A77272;
@@ -87,7 +122,7 @@ input[type='text']:active, input[type='text']:active, .default-input:active{
 }
 input[type='button'], input[type='submit'], .default-button {
     height: 40px;
-    width: 100%;
+    width: 33%;
     border-radius: 5px;
     border: 1px;
 
