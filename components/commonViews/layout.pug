@@ -1,7 +1,53 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title= title
+
+        block stylesheets
+            link(rel="stylesheet", href="/stylesheets/style.css")
+
+        link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css",
+            rel="stylesheet",
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1",
+            crossorigin="anonymous")
+        block head-scripts
+            script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js",
+                integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW",
+                crossorigin="anonymous")
+
+
+body
+    header.bg-info
+        nav.nav.justify-content-between
+            .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+                a.nav-link.text-light.fs-4.fw-bold.p-0(href="/") Новости
+            .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+                a.nav-link.text-light.fs-4.fw-bold.p-0(href="/") Поиск
+            .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+                a.nav-link.text-light.fs-4.fw-bold.p-0(href="/") Об архиве
+            .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+                a.nav-link.text-light.fs-4.fw-bold.p-0(href="/") Уонтакты
+            // - if (!locals.isAuthenticated)
+            // .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
+            //     - if (route != 'login')
+            //     a.nav-link.text-light.fs-4.fw-bold.p-0(href="/login") Вход
+            // - else
+            .nav-item.dropdown.col-12.col-sm-12.col-md-4.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
+                a.nav-link.dropdown-toggle.h-100.d-flex.flex-row.align-items-center.text-light.p-0#dropdown-button(href="#", role='button', data-bs-toggle="dropdown", aria-expanded="false")
+                    #user-info.d-flex.flex-column.align-items-end
+                        #user-email= locals.userInfo.email
+                        #user-company= locals.userInfo.company
+                .dropdown-menu.dropdown-menu-end.bg-info(aria-labelledby="dropdown-button")
+                    a.dropdown-item.bg-info.text-dark(href="/profile") Личный кабинет
+                    hr.dropdown-divider.text-info
+                    a.dropdown-item.bg-info.text-dark(href="/logout") Выход
+
     block content
+
+    footer.my-5.pt-5.text-muted.text-center.text-small
+
+    block scripts
+        script(src="/javascripts/layout.js")
