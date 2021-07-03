@@ -12,8 +12,107 @@ a {
 
 .navbar-custom {
     background-color: #A77272;
+    min-height: 40px;
 }
 
 .dropdown_custom {
     background-color: #A77272;
+}
+
+#search-row-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px 20px 10px 20px;
+    background-color: #FFFFFF;
+
+
+    font-family: Roboto-Reg;
+    font-style: normal;
+    font-weight: normal;
+}
+#search-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40px;
+}
+#search-button, #search-button-advanced {
+    width: 100px;
+    min-width: 100px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+#search-input {
+    /*border-top-right-radius: 0px;*/
+    /*border-bottom-right-radius: 0px;*/
+    /*border: 1px #A77272;*/
+    min-width: 40%;
+}
+#advanced-search-button {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1px;
+    margin-top: 10px;
+}
+
+.custom-select {
+    max-width: 305px;
+
+    border-top: 2px solid #A77272;
+    border-bottom: 2px solid #A77272;
+    border-right: 2px solid #A77272;
+    border-left: none;
+    border-radius: 0;
+}
+
+input[type='text'], input[type='text'], .default-input {
+    padding-left: 9px;
+    outline: none;
+    border-top: 2px solid #A77272;
+    border-bottom: 2px solid #A77272;
+    border-left: 2px solid #A77272;
+    border-right: none;
+    border-radius: 5px 0px 0px 5px;
+
+}
+
+input[type='text']:active, input[type='text']:active, .default-input:active{
+    padding-left: 9px;
+    outline: none;
+    border-top: 2px solid #A77272;
+    border-bottom: 2px solid #A77272;
+    border-left: 2px solid #A77272;
+    border-right: none;
+    border-radius: 5px 0px 0px 5px;
+}
+input[type='button'], input[type='submit'], .default-button {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #A77272;
+    color: #FFFFFF;
+    cursor:pointer;
+
+    font-family: Roboto-Bold;
+    font-style: normal;
+    font-weight: normal;
+
+    font-size: 14px;
+    line-height: 1px;
+}
+input[type='button'], input[type='submit'], .default-button:visited {
+    color: #FFFFFF;
+}
+input[type='button']:focus, input[type='submit']:focus, .default-button:focus {
+    outline: none;
+}
+input[type='button']:active, input[type='submit']:active, .default-button:active {
+    font-size: calc(14px - 1px);
 }
