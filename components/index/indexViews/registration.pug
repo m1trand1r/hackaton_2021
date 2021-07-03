@@ -1,0 +1,23 @@
+extends ../../commonViews/layout
+
+block content
+    #content.pt-5.d-flex.align-items-center
+        //TODO add registration
+        form.container-fluid.mb-5(action="#", method="post")
+            h1.form-header.row.justify-content-center.mb-2.mb-md-5.font_color Регистрация
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="text", name="name", placeholder="Имя", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="text", name="surname", placeholder="Фамилия", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="text", name="patronymic", placeholder="Отчество", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="email", name="patronymic", placeholder="Почта", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="date", name="date_of_birth", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="password", name="password", placeholder="Пароль", required)
+            p.registration-form-el.row.justify-content-center
+                input.registration-input.col-6.col-sm-4.col-lg-3.custom_input(type="password", name="repeatPassword", placeholder="Подтверждение пароля", required)
+            p.registration-form-el.row.justify-content-center
+                input.btn.col-6.col-sm-4.col-lg-3.text-light.submit_btn(type="submit", value="Зарегистрировать")

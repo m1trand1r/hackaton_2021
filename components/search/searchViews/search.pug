@@ -7,7 +7,7 @@ block content
         .col-12
             #search-row-container
                 #search-row
-                    input#search-input(type="text", name="search-row", placeholder="Поиск по электронному каталогу", autocomplete="off", value= requestText || "")
+                    input(type="text", name="search-row", placeholder="Поиск по электронному каталогу", autocomplete="off", value= requestText || "").search-input
                     select(id="category", name="category").form-select.custom-select
                         option(value="default") По названию Фонда/Описи/Дела
                         option(value="subject_index") По предметному указателю

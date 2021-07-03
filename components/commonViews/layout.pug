@@ -23,33 +23,31 @@ html(lang="ru")
 
 
 
-
 body
-    header.bg-info
-        nav.nav.justify-content-between.navbar-custom
-            .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-                a.nav-link.text-light.fw-bold.p-2(href="/") Новости
-            .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-                a.nav-link.text-light.fw-bold.p-2(href="/") Поиск
-            .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-                a.nav-link.text-light.fw-bold.p-2(href="/") Об архиве
-            .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-                a.nav-link.text-light.fw-bold.p-2(href="/") Контакты
-            // - if (!locals.isAuthenticated)
-            // .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
-            //     - if (route != 'login')
-            //     a.nav-link.text-light.fs-4.fw-bold.p-0(href="/login") Вход
-            // - else
-            .nav-item.dropdown.col-12.col-sm-12.col-md-4.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
-                i.bi.bi-person-circle.icon_custom
-                a.nav-link.dropdown-toggle.h-100.d-flex.flex-row.align-items-center.text-light.p-2#dropdown-button(href="#", role='button', data-bs-toggle="dropdown", aria-expanded="false")
-                    //#user-info.d-flex.flex-column.align-items-end
-                    //    #user-email= locals.userInfo.email
-                    //    #user-company= locals.userInfo.company
-                .dropdown-menu.dropdown-menu-end.dropdown_custom(aria-labelledby="dropdown-button")
-                    a.dropdown-item.dropdown_custom.text-light(href="/profile") Личный кабинет
-                    hr.dropdown-divider.text-dark
-                    a.dropdown-item.dropdown_custom.text-light(href="/logout") Выход
+    nav.nav.justify-content-between.navbar-custom
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+            a.nav-link.text-light.fw-bold.p-2(href="/") Новости
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+            a.nav-link.text-light.fw-bold.p-2(href="/") Поиск
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+            a.nav-link.text-light.fw-bold.p-2(href="/") Об архиве
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+            a.nav-link.text-light.fw-bold.p-2(href="/") Контакты
+        // - if (!locals.isAuthenticated)
+        // .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
+        //     - if (route != 'login')
+        //     a.nav-link.text-light.fs-4.fw-bold.p-0(href="/login") Вход
+        // - else
+        .nav-item.dropdown.col-12.col-sm-12.col-md-4.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
+            i.bi.bi-person-circle.icon_custom
+            a.nav-link.dropdown-toggle.h-100.d-flex.flex-row.align-items-center.text-light.p-2#dropdown-button(href="#", role='button', data-bs-toggle="dropdown", aria-expanded="false")
+                //#user-info.d-flex.flex-column.align-items-end
+                //    #user-email= locals.userInfo.email
+                //    #user-company= locals.userInfo.company
+            .dropdown-menu.dropdown-menu-end.dropdown_custom(aria-labelledby="dropdown-button")
+                a.dropdown-item.dropdown_custom.text-light(href="/profile") Личный кабинет
+                hr.dropdown-divider.text-dark
+                a.dropdown-item.dropdown_custom.text-light(href="/logout") Выход
 
     block content
 
