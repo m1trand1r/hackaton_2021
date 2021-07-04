@@ -11,7 +11,7 @@ const LocalStrategy = require('passport-local').Strategy;
 var indexRouter = require('./components/index/indexRouter');
 var usersRouter = require('./components/users/usersRouter');
 var searchRouter = require('./components/search/searchRouter');
-var searchRouter = require('./components/news/newsRouter');
+var newsRouter = require('./components/news/newsRouter');
 
 const db = require('./databases/mongoDB');
 
@@ -91,7 +91,7 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
-app.use('/news', searchRouter);
+app.use('/news', newsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
