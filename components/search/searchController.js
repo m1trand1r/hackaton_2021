@@ -38,9 +38,70 @@ function getFiles(dirPath, callback) {
 }
 
 module.exports.getSearch = (req, res, next) => {
-    res.render('search/searchViews/search', {
-        title: 'Поиск'
-    });
+    if (req.query.text) {
+        getFiles('./fond', async function (err, files) {
+            if (err) throw err;
+            let text = '';
+            let result = null;
+            let documentsNumbers = [];
+            if (req.query.filter && req.query.filter != 'default') {
+                documentsNumbers = (await searchModel.getDocumentNumber(req.query.text, req.query.filter)).flat();
+                result = files.filter(file => documentsNumbers.some(doc => file.split('/')[3].toLocaleLowerCase().includes(doc)));
+            } else {
+                text = req.query.text;
+                result = files.filter(file => {
+                    let lowerFile = file.toLocaleLowerCase();
+                    let lowerFileArr = lowerFile.split('/');
+                    let lowerText = req.query.text.toLocaleLowerCase();
+                    if (lowerFileArr[1].includes(lowerText) || lowerFileArr[2].includes(lowerText) || lowerFileArr[3].includes(lowerText)) {
+                        return true
+                    }
+                    return false;
+                });
+            }
+            result = result.map(doc => {
+                let docArr = doc.split('/');
+                return {
+                    path: doc,
+                    fund: docArr[1],
+                    inventory: docArr[2],
+                    document: docArr[3],
+                    imageName: docArr[4]
+                }
+            });
+            let resultMap = new Map();
+            for (let doc of result) {
+                let key = `${doc.fund}/${doc.inventory}/${doc.document}`;
+                if (!resultMap.has(key)) {
+                    resultMap.set(key, {
+                        index: files.indexOf(doc.path),
+                        documents: [{
+                        imageName: doc.imageName,
+                        path: doc.path
+                    }]});
+                } else {
+                    resultMap.set(key, {
+                        index: files.indexOf(doc.path),
+                        documents: [{
+                        index: files.indexOf(doc.path),
+                        imageName: doc.imageName,
+                        path: doc.path
+                    }, ...resultMap.get(key).documents]});
+                }
+            }
+            console.log(Object.fromEntries(resultMap.entries()));
+            res.render('search/searchViews/search', {
+                title: 'Поиск',
+                result: Object.fromEntries(resultMap.entries()),
+                text: text
+            });
+        });
+    } else {
+        res.render('search/searchViews/search', {
+            title: 'Поиск',
+            result: null
+        });
+    }
 };
 
 module.exports.postSearch = async (req, res, next) => {   

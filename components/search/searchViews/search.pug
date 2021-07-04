@@ -9,7 +9,7 @@ block content
         .col-12
             #search-row-container
                 #search-row
-                    input#search-input(type="text", name="search-row", placeholder="Поиск по архиву", autocomplete="off", value= requestText || "").search-input
+                    input#search-input(type="text", name="search-row", placeholder="Поиск по архиву", autocomplete="off", value= text || "").search-input
                     select(id="category", name="category").form-select.custom-select
                         option(value="default") По названию Фонда/Описи/Дела
                         option(value="subject_index") По предметному указателю
@@ -19,4 +19,9 @@ block content
     .row
         .col-12 
             #search-results
-            
+                if result
+                    each key in Object.keys(result)
+                        a.doc-link(href=`/document?id=${result[key].index}`)
+                            div.document-name= key
+                            div.document-count= result[key].documents.length
+                            div.add-remove-btn(title='Добавить')
