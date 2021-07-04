@@ -80,7 +80,7 @@ function documentsAction(e) {
 
         } else if (target.classList.contains('document-name')) {
             let keys = Object.entries(documents);
-            console.log(keys.find(doc => doc[1].documents[0].index == parseInt(target.dataset.index)));
+            showViewWindow(keys.find(doc => doc[1].documents[0].index == parseInt(target.dataset.index)))
         }
     }
 }
@@ -97,7 +97,31 @@ function documentActionListener() {
     .addEventListener('click', documentsAction);
 }
 
+function closeViewWindow() {
+    document.getElementById('view-window').classList.add('d-none');
+}
+
+function showViewWindow(data) {
+    let name = data[0];
+    let documents = data[1].documents.slice(-3).sort((doc1, doc2) => doc1.index > doc2.index ? 1 : -1);
+    let window = document.getElementById('view-window');
+    console.log(window, name, documents);
+}
+
+function viewWindowAction(e) {
+    if (e.target.id == 'doc-menu') {
+        closeViewWindow();
+    }
+}
+
+function viewWindowActionListener() {
+    document
+    .getElementById('view-window')
+    .addEventListener('click', viewWindowAction);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     searchAddListener();
     documentActionListener();
+    viewWindowActionListener();
 });
