@@ -41,7 +41,17 @@ block content
                             span.p-2.fw-bold.font_color.document-count= result[key].documents.length
                         .col-3.d-flex.justify-content-center.align-content-center
                             span.p-2.fw-bold.font_color.add-remove-btn(title='Добавить')
-                        //div.document-idx= idx+1
-                        //div.document-name(data-index= result[key].documents[0].index)= key
-                        //div.document-count= result[key].documents.length
-                        //div.add-remove-btn(title='Добавить')
+    #view-window
+        #doc-name
+            h1 Фонд 1/Опись 1/Дело 2
+        #main-container
+            #image-main-container
+                img#image-main(src="/images/0001 обложка.jpg")
+            #image-carousel-container
+                img#top-carousel-btn(src="/images/top-btn.svg")
+                #image-carousel
+                    ul.images
+                        li
+                            img.carousel-img(src="https://ru.js.cx/carousel/1.png")
+                img#bot-carousel-btn(src="/images/bot-btn.svg")
+

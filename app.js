@@ -8,9 +8,9 @@ var expressSession = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
+var indexRouter = require('./components/index/indexRouter');
 var usersRouter = require('./components/users/usersRouter');
 var searchRouter = require('./components/search/searchRouter');
-var newsRouter = require('./components/news/newsRouter');
 
 const db = require('./databases/mongoDB');
 
@@ -87,7 +87,7 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use('/', newsRouter);
+app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 

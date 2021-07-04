@@ -27,8 +27,8 @@ function renderResult() {
         documentContainer.innerHTML = `<div class='document-idx col-1 d-flex justify-content-start align-content-center'>
             <span class="p-2 fw-bold font_color">${idx}</span>
         </div>
-        <div class='document-name col-4 d-flex justify-content-center align-content-center' data-index=${documents[key].documents[0].index}>
-            <span class="p-2 fw-bold font_color">${key}</span>
+        <div class='col-4 d-flex justify-content-center align-content-center'>
+            <span class="p-2 fw-bold font_color document-name" data-index=${documents[key].documents[0].index}>${key}</span>
         </div>
         <div class='document-count col-4 d-flex justify-content-center align-content-center'>
             <span class="p-2 fw-bold font_color">${documents[key].documents.length}</span>

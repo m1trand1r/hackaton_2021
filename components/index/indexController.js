@@ -3,8 +3,8 @@ const fs = require('fs');
 const indexModel = require('./indexModel');
 
 module.exports.getIndex = (req, res, next) => {
-    res.render('index/indexViews/index', {
-        title: 'Главная'
+    res.render('news/newsViews/news', {
+        title: 'Новости'
     });
 };
 
