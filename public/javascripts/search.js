@@ -79,7 +79,8 @@ function documentsAction(e) {
         if (target.classList.contains('add-remove-btn')) {
 
         } else if (target.classList.contains('document-name')) {
-            console.log(documents);
+            let keys = Object.entries(documents);
+            console.log(keys.find(doc => doc[1].documents[0].index == parseInt(target.dataset.index)));
         }
     }
 }

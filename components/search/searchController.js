@@ -74,14 +74,12 @@ module.exports.getSearch = (req, res, next) => {
                 let key = `${doc.fund}/${doc.inventory}/${doc.document}`;
                 if (!resultMap.has(key)) {
                     resultMap.set(key, {
-                        index: files.indexOf(doc.path),
                         documents: [{
                         imageName: doc.imageName,
                         path: doc.path
                     }]});
                 } else {
                     resultMap.set(key, {
-                        index: files.indexOf(doc.path),
                         documents: [{
                         index: files.indexOf(doc.path),
                         imageName: doc.imageName,
