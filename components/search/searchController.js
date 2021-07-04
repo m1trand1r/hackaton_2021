@@ -10,7 +10,7 @@ function getFiles(dirPath, callback) {
     fs.readdir(dirPath, function (err, files) {
         if (err) return callback(err);
         var filePaths = [];
-        async.eachSeries(files, function (fileName, eachCallback) {
+        async.each(files, function (fileName, eachCallback) {
             var filePath = path.join(dirPath, fileName);
             fs.stat(filePath, function (err, stat) {
                 if (err) return eachCallback(err);
@@ -163,3 +163,15 @@ module.exports.postSearch = async (req, res, next) => {
         next(err);
     }
 };
+
+module.exports.getImage = async (req, res, next) => {   
+    try {
+        if (!req.query.path) throw new Error('Не передан индекс изображения');
+        fs.readFile(`./${req.query.path}`, (err, image) => {
+            if (err) throw err;
+            res.setHeader("Content-Type", "image/jpeg").end(image);
+        });
+    } catch (err) {
+
+    }
+}

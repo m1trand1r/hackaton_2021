@@ -1,3 +1,4 @@
+let data = null;
 function postFetchWrapper(url, body) {
     return new Promise((resolve, reject) => {
         fetch(url, {
@@ -65,6 +66,7 @@ async function search() {
     })
     .then(docs => {
         documents = docs;
+        console.log(documents);
         renderResult();
     })
     .catch(err => {
@@ -80,7 +82,8 @@ function documentsAction(e) {
 
         } else if (target.classList.contains('document-name')) {
             let keys = Object.entries(documents);
-            showViewWindow(keys.find(doc => doc[1].documents[0].index == parseInt(target.dataset.index)))
+            data = keys.find(doc => doc[1].documents[0].index == parseInt(target.dataset.index));
+            showViewWindow(data[0], data[1].documents.slice(-3).sort((doc1, doc2) => doc1.index > doc2.index ? 1 : -1));
         }
     }
 }
@@ -101,16 +104,37 @@ function closeViewWindow() {
     document.getElementById('view-window').classList.add('d-none');
 }
 
-function showViewWindow(data) {
-    let name = data[0];
-    let documents = data[1].documents.slice(-3).sort((doc1, doc2) => doc1.index > doc2.index ? 1 : -1);
+function showViewWindow(name, documents) {
     let window = document.getElementById('view-window');
-    console.log(window, name, documents);
+    document.querySelector('#image-main').setAttribute('src', `/search/image?path=${documents[0].path}`);
+    document.querySelector('#doc-name-header').innerText = name;
+    document.querySelector('#img-name').innerText = documents[0].imageName;
+    let carouselImgs = window.querySelectorAll('.carousel-img');
+    for (let i = 0; i < carouselImgs.length; i++) {
+        carouselImgs[i].setAttribute('src', `/search/image?path=${documents[i].path}`);
+        carouselImgs[i].setAttribute('dataset-name', documents[i].imageName);
+    }
+    window.classList.remove('d-none');
+
+    let loadMore = document.querySelector('#bot-carousel-btn');
+    loadMore.setAttribute('dataset-from', parseInt(loadMore.getAttribute('dataset-from') - 3));
+}
+
+function setNewMainImage(newSrc, newName) {
+    document.querySelector('#image-main').setAttribute('src', newSrc);
+    document.querySelector('#img-name').innerText = newName;
 }
 
 function viewWindowAction(e) {
     if (e.target.id == 'doc-menu') {
         closeViewWindow();
+    } else if (e.target.classList.contains('carousel-img')) {
+        setNewMainImage(e.target.src, e.target.getAttribute('dataset-name'));
+    } else if (e.target.classList.contains('load-more')) {
+        if (e.target.id = 'bot-carousel-btn') {
+            let index = parseInt(e.target.getAttribute('dataset-from'));
+            showViewWindow(data[0], data[1].documents.slice(index).sort((doc1, doc2) => doc1.index > doc2.index ? -1 : 1));
+        }
     }
 }
 
