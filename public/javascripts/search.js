@@ -71,9 +71,10 @@ async function search() {
 
 function documentsAction(e) {
     let target = e.target;
+    console.log(e);
     if (target.classList.contains('add-remove-btn')) {
 
-    } else if (e.currentTarget.classList.contains('doc-link')) {
+    } else if (target.classList.contains('doc-link')) {
         console.log(documents);
     }
 }
