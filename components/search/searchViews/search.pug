@@ -6,7 +6,7 @@ append head-scripts
         documents = !{JSON.stringify(result)}
 
 block content
-    h1= title
+    p.fs-1.p-4.font_color.d-flex.justify-content-center Поиск
     .row
         .col-12.pr-0
             #search-row-container
@@ -19,12 +19,29 @@ block content
                         option(value="epmk") По протоколу ЭПМК
                     input#search-button(type="button", value="Найти")
     .row
-        .col-12 
-            #search-results
-                if result
-                    each key, idx in Object.keys(result)
-                        .doc-link
-                            div.document-idx= idx+1
-                            div.document-name(data-index= result[key].documents[0].index)= key
-                            div.document-count= result[key].documents.length
-                            div.add-remove-btn(title='Добавить')
+        #title-row-container
+            .col-1.d-flex.justify-content-start.align-content-center
+                span.p-2.fw-bold.font_color #
+            .col-4.d-flex.justify-content-center.align-content-center
+                span.p-2.fw-bold.font_color Название
+            .col-4.d-flex.justify-content-center.align-content-center
+                span.p-2.fw-bold.font_color Количество документов
+            .col-3.d-flex.justify-content-center.align-content-center
+                span.p-2.fw-bold.font_color Добавить в избранное
+    .row
+        #search-results
+            if result
+                each key, idx in Object.keys(result)
+                    .doc-link
+                        .col-1.d-flex.justify-content-start.align-content-center
+                            span.p-2.fw-bold.font_color.document-idx= idx+1
+                        .col-4.d-flex.justify-content-center.align-content-center
+                            span.p-2.fw-bold.font_color.document-name(data-index= result[key].documents[0].index)= key
+                        .col-4.d-flex.justify-content-center.align-content-center
+                            span.p-2.fw-bold.font_color.document-count= result[key].documents.length
+                        .col-3.d-flex.justify-content-center.align-content-center
+                            span.p-2.fw-bold.font_color.add-remove-btn(title='Добавить')
+                        //div.document-idx= idx+1
+                        //div.document-name(data-index= result[key].documents[0].index)= key
+                        //div.document-count= result[key].documents.length
+                        //div.add-remove-btn(title='Добавить')
