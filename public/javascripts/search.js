@@ -60,8 +60,8 @@ async function search() {
         text: text,
         filter: filter
     })
-    .then(documents => {
-        documents = documents;
+    .then(docs => {
+        documents = docs;
         renderResult();
     })
     .catch(err => {
@@ -71,7 +71,6 @@ async function search() {
 
 function documentsAction(e) {
     let target = e.target;
-    console.log(e);
     if (target.classList.contains('add-remove-btn')) {
 
     } else if (target.classList.contains('doc-link')) {

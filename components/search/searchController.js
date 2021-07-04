@@ -92,7 +92,7 @@ module.exports.getSearch = (req, res, next) => {
             res.render('search/searchViews/search', {
                 title: 'Поиск',
                 result: Object.fromEntries(resultMap.entries()),
-                text: text //
+                text: text 
             });
         });
     } else {
