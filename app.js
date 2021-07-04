@@ -12,6 +12,7 @@ var indexRouter = require('./components/index/indexRouter');
 var usersRouter = require('./components/users/usersRouter');
 var searchRouter = require('./components/search/searchRouter');
 var newsRouter = require('./components/news/newsRouter');
+var documentRouter = require('./components/news/documentRouter');
 
 const db = require('./databases/mongoDB');
 
@@ -92,6 +93,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
 app.use('/news', newsRouter);
+app.use('/news', documentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
