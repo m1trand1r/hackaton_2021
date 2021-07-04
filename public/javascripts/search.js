@@ -24,7 +24,7 @@ function renderResult(documents) {
         let documentContainer = document.createElement('a');
         documentContainer.classList.add('doc-link');
         console.log(documents[key]);
-        documentContainer.href="#";
+        documentContainer.href=`/document?id=${documents[key].length}`;
         documentContainer.innerHTML = `<div class='document-name'>
             ${key}
         </div>

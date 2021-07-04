@@ -8,11 +8,10 @@ var expressSession = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 
-var indexRouter = require('./components/index/indexRouter');
 var usersRouter = require('./components/users/usersRouter');
 var searchRouter = require('./components/search/searchRouter');
 var newsRouter = require('./components/news/newsRouter');
-var documentRouter = require('./components/news/documentRouter');
+var documentRouter = require('./components/document/documentRouter');
 
 const db = require('./databases/mongoDB');
 
@@ -89,11 +88,10 @@ app.use((req, res, next) => {
   next();
 })
 
-app.use('/', indexRouter);
+app.use('/', newsRouter);
 app.use('/users', usersRouter);
 app.use('/search', searchRouter);
-app.use('/news', newsRouter);
-app.use('/news', documentRouter);
+app.use('/document', documentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
