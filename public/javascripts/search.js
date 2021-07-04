@@ -24,16 +24,16 @@ function renderResult() {
     for (let key in documents) {
         let documentContainer = document.createElement('div');
         documentContainer.classList.add('doc-link');
-        documentContainer.innerHTML = `<div class='document-idx'>
-            ${idx}
+        documentContainer.innerHTML = `<div class='document-idx col-1 d-flex justify-content-start align-content-center'>
+            <span class="p-2 fw-bold font_color">${idx}</span>
         </div>
-        <div class='document-name' data-index=${documents[key].documents[0].index}>
-            ${key}
+        <div class='document-name col-4 d-flex justify-content-center align-content-center' data-index=${documents[key].documents[0].index}>
+            <span class="p-2 fw-bold font_color">${key}</span>
         </div>
-        <div class='document-count'>
-            ${documents[key].documents.length}
+        <div class='document-count col-4 d-flex justify-content-center align-content-center'>
+            <span class="p-2 fw-bold font_color">${documents[key].documents.length}</span>
         </div>
-        <div class='add-remove-btn' title='Добавить'>
+        <div class='add-remove-btn mx-auto col-3 d-flex justify-content-end align-content-center' title='Добавить'>
             
         </div>`;
         container.append(documentContainer);

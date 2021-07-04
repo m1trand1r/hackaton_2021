@@ -61,6 +61,16 @@ form {
     border: 3px solid #A77272;
 }
 
+#title-row-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+
+    font-family: Roboto-Reg;
+    font-style: normal;
+    font-weight: normal;
+}
 
 #search-row-container {
     width: 100%;
@@ -162,10 +172,17 @@ input[type='button']:active, input[type='submit']:active, .default-button:active
 }
 
 #search-results {
-    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 20px 10px 20px;
+
+    font-family: Roboto-Reg;
+    font-style: normal;
+    font-weight: normal;
 }
 .doc-link {
-    display: block;
+    display: flex;
 }
 .add-remove-btn {
     display: block;
