@@ -22,8 +22,9 @@ block content
         .col-12 
             #search-results
                 if result
-                    each key in Object.keys(result)
+                    each key, idx in Object.keys(result)
                         .doc-link
+                            div.document-idx= idx+1
                             div.document-name(data-index= result[key].documents[0].index)= key
                             div.document-count= result[key].documents.length
                             div.add-remove-btn(title='Добавить')
