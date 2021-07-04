@@ -24,8 +24,7 @@ function renderResult() {
     for (let key in documents) {
         let documentContainer = document.createElement('div');
         documentContainer.classList.add('doc-link');
-        documentContainer.setAttribute('data-index', documents[key].documents[0].index);
-        documentContainer.innerHTML = `<div class='document-name'>
+        documentContainer.innerHTML = `<div class='document-name' data-index=${documents[key].documents[0].index}>
             ${key}
         </div>
         <div class='document-count'>
