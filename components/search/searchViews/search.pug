@@ -2,6 +2,8 @@ extends ../../commonViews/layout
 
 append head-scripts
     script(src="javascripts/search.js")
+    script.     
+        documents = !{JSON.stringify(result)}
 
 block content
     h1= title
@@ -21,7 +23,7 @@ block content
             #search-results
                 if result
                     each key in Object.keys(result)
-                        a.doc-link(href=`/document?id=${result[key].index}`)
+                        .doc-link(data-index= result[key].index)
                             div.document-name= key
                             div.document-count= result[key].documents.length
                             div.add-remove-btn(title='Добавить')

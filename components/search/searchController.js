@@ -89,7 +89,6 @@ module.exports.getSearch = (req, res, next) => {
                     }, ...resultMap.get(key).documents]});
                 }
             }
-            console.log(Object.fromEntries(resultMap.entries()));
             res.render('search/searchViews/search', {
                 title: 'Поиск',
                 result: Object.fromEntries(resultMap.entries()),
@@ -141,15 +140,20 @@ module.exports.postSearch = async (req, res, next) => {
                 for (let doc of result) {
                     let key = `${doc.fund}/${doc.inventory}/${doc.document}`;
                     if (!resultMap.has(key)) {
-                        resultMap.set(key, [{
+                        resultMap.set(key, {
+                            index: files.indexOf(doc.path),
+                            documents: [{
                             imageName: doc.imageName,
                             path: doc.path
-                        }]);
+                        }]});
                     } else {
-                        resultMap.set(key, [{
+                        resultMap.set(key, {
+                            index: files.indexOf(doc.path),
+                            documents: [{
+                            index: files.indexOf(doc.path),
                             imageName: doc.imageName,
                             path: doc.path
-                        }, ...resultMap.get(key)]);
+                        }, ...resultMap.get(key).documents]});
                     }
                 }
                 res.json(Object.fromEntries(resultMap.entries()));

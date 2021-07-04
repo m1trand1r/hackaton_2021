@@ -17,19 +17,19 @@ function postFetchWrapper(url, body) {
     });
 }
 
-function renderResult(documents) {
+function renderResult() {
     let container = document
     .getElementById('search-results');
+
     for (let key in documents) {
-        let documentContainer = document.createElement('a');
+        let documentContainer = document.createElement('div');
         documentContainer.classList.add('doc-link');
-        console.log(documents[key]);
-        documentContainer.href=`/document?id=${documents[key].length}`;
+        documentContainer.setAttribute('data-index', documents[key].index);
         documentContainer.innerHTML = `<div class='document-name'>
             ${key}
         </div>
         <div class='document-count'>
-            ${documents[key].length}
+            ${documents[key].documents.length}
         </div>
         <div class='add-remove-btn' title='Добавить'>
             
@@ -61,11 +61,21 @@ async function search() {
         filter: filter
     })
     .then(documents => {
-        renderResult(documents);
+        documents = documents;
+        renderResult();
     })
     .catch(err => {
         console.log(err);
     });
+}
+
+function documentsAction(e) {
+    let target = e.target;
+    if (target.classList.contains('add-remove-btn')) {
+
+    } else if (e.currentTarget.classList.contains('doc-link')) {
+        console.log(documents);
+    }
 }
 
 function searchAddListener() {
@@ -74,6 +84,13 @@ function searchAddListener() {
     .addEventListener('click', search);
 }
 
+function documentActionListener() {
+    document
+    .getElementById('search-results')
+    .addEventListener('click', documentsAction);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     searchAddListener();
+    documentActionListener();
 });
