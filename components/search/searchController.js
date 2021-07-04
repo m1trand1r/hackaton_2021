@@ -46,12 +46,12 @@ module.exports.getSearch = (req, res, next) => {
             let documentsNumbers = [];
             if (req.query.filter && req.query.filter != 'default') {
                 documentsNumbers = (await searchModel.getDocumentNumber(req.query.text, req.query.filter)).flat();
-                result = files.filter(file => documentsNumbers.some(doc => file.split('/')[3].toLocaleLowerCase().includes(doc)));
+                result = files.filter(file => documentsNumbers.some(doc => file.split('\\')[3].toLocaleLowerCase().includes(doc)));
             } else {
                 text = req.query.text;
                 result = files.filter(file => {
                     let lowerFile = file.toLocaleLowerCase();
-                    let lowerFileArr = lowerFile.split('/');
+                    let lowerFileArr = lowerFile.split('\\');
                     let lowerText = req.query.text.toLocaleLowerCase();
                     if (lowerFileArr[1].includes(lowerText) || lowerFileArr[2].includes(lowerText) || lowerFileArr[3].includes(lowerText)) {
                         return true
@@ -60,7 +60,7 @@ module.exports.getSearch = (req, res, next) => {
                 });
             }
             result = result.map(doc => {
-                let docArr = doc.split('/');
+                let docArr = doc.split('\\');
                 return {
                     path: doc,
                     fund: docArr[1],
@@ -111,12 +111,12 @@ module.exports.postSearch = async (req, res, next) => {
                 let documentsNumbers = [];
                 if (req.body.filter && req.body.filter != 'default') {
                     documentsNumbers = (await searchModel.getDocumentNumber(req.body.text, req.body.filter)).flat();
-                    result = files.filter(file => documentsNumbers.some(doc => file.split('/')[3].toLocaleLowerCase().includes(doc)));
+                    result = files.filter(file => documentsNumbers.some(doc => file.split('\\')[3].toLocaleLowerCase().includes(doc)));
                 } else {
                     text = req.body.text;
                     result = files.filter(file => {
                         let lowerFile = file.toLocaleLowerCase();
-                        let lowerFileArr = lowerFile.split('/');
+                        let lowerFileArr = lowerFile.split('\\');
                         let lowerText = req.body.text.toLocaleLowerCase();
                         if (lowerFileArr[1].includes(lowerText) || lowerFileArr[2].includes(lowerText) || lowerFileArr[3].includes(lowerText)) {
                             return true
@@ -125,7 +125,7 @@ module.exports.postSearch = async (req, res, next) => {
                     });
                 }
                 result = result.map(doc => {
-                    let docArr = doc.split('/');
+                    let docArr = doc.split('\\');
                     return {
                         path: doc,
                         fund: docArr[1],

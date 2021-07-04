@@ -8,6 +8,7 @@ const MONGODB_URI = mongoDB.URI;
 ObjectId = require('mongodb').ObjectID;
 
 const mongoClient = new MongoClient(MONGODB_URI, { useUnifiedTopology: true });
+//mongoexport --forceTableScan --uri mongodb+srv://destro:29062000@cluster0.i1chw.mongodb.net/hackaton_2021 --collection users --out users.json
 
 let dbClient = null;
 
