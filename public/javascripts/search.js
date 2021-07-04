@@ -24,7 +24,7 @@ function renderResult() {
     for (let key in documents) {
         let documentContainer = document.createElement('div');
         documentContainer.classList.add('doc-link');
-        documentContainer.setAttribute('data-index', documents[key].index);
+        documentContainer.setAttribute('data-index', documents[key].documents[0].index);
         documentContainer.innerHTML = `<div class='document-name'>
             ${key}
         </div>
@@ -71,10 +71,13 @@ async function search() {
 
 function documentsAction(e) {
     let target = e.target;
-    if (target.classList.contains('add-remove-btn')) {
+    let currentTarget = e.currentTarget;
+    if (target != currentTarget) {
+        if (target.classList.contains('add-remove-btn')) {
 
-    } else if (target.classList.contains('doc-link')) {
-        console.log(documents);
+        } else if (target.classList.contains('document-name')) {
+            console.log(documents);
+        }
     }
 }
 

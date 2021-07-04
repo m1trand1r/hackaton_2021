@@ -23,7 +23,7 @@ block content
             #search-results
                 if result
                     each key in Object.keys(result)
-                        .doc-link(data-index= result[key].index)
+                        .doc-link(data-index= result[key].documents[0].index)
                             div.document-name= key
                             div.document-count= result[key].documents.length
                             div.add-remove-btn(title='Добавить')
