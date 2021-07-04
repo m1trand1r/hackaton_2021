@@ -24,22 +24,24 @@ html(lang="ru")
 
 
 body
-    nav.nav.justify-content-between.navbar-custom
-        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-            a.nav-link.text-light.fw-bold.p-2(href="/") Новости
-        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
-            a.nav-link.text-light.fw-bold.p-2(href="/search") Поиск
-        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+    nav.d-flex.align-items-start.navbar-custom
+        .nav-item.navbar-custom.col-3.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
+            img(src="/images/logo.svg").custom_img
+        .nav-item.navbar-custom.col-3.col-sm-3.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
+            a.nav-link.text-light.fw-bold(href="/") Новости
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
+            a.nav-link.text-light.fw-bold(href="/search") Поиск
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
             a.nav-link.text-light.fw-bold.p-2(href="/") Об архиве
-        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-start.align-items-center
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
             a.nav-link.text-light.fw-bold.p-2(href="/") Контакты
         // - if (!locals.isAuthenticated)
         // .nav-item.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
         //     - if (route != 'login')
         //     a.nav-link.text-light.fs-4.fw-bold.p-0(href="/login") Вход
         // - else
-        .nav-item.dropdown.col-12.col-sm-12.col-md-4.d-flex.justify-content-center.justify-content-sm-center.justify-content-md-end.align-items-center
-            i.bi.bi-person-circle.icon_custom
+        .nav-item.navbar-custom.col-12.col-sm-12.col-md-2.d-flex.justify-content-center.justify-content-sm-center.align-items-center
+            i.bi.bi-person-circle.align-items-center.icon_custom
             a.nav-link.dropdown-toggle.h-100.d-flex.flex-row.align-items-center.text-light.p-2#dropdown-button(href="#", role='button', data-bs-toggle="dropdown", aria-expanded="false")
                 //#user-info.d-flex.flex-column.align-items-end
                 //    #user-email= locals.userInfo.email

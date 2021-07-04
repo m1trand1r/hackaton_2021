@@ -12,6 +12,15 @@ form {
     margin-top: 0em;
 }
 
+.row {
+    --bs-gutter-x: 0rem;
+}
+
+.custom_img {
+    width: 24px;
+    height: 24px;
+}
+
 .icon_custom {
     color: #FFFFFF;
 }
