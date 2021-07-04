@@ -20,11 +20,14 @@ function postFetchWrapper(url, body) {
 function renderResult() {
     let container = document
     .getElementById('search-results');
-
+    let idx = 1;
     for (let key in documents) {
         let documentContainer = document.createElement('div');
         documentContainer.classList.add('doc-link');
-        documentContainer.innerHTML = `<div class='document-name' data-index=${documents[key].documents[0].index}>
+        documentContainer.innerHTML = `<div class='document-idx'>
+            ${idx}
+        </div>
+        <div class='document-name' data-index=${documents[key].documents[0].index}>
             ${key}
         </div>
         <div class='document-count'>
@@ -34,6 +37,7 @@ function renderResult() {
             
         </div>`;
         container.append(documentContainer);
+        idx++;
     }
 }
 
